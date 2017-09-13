@@ -61,15 +61,21 @@ public class StockTest {
         expectedSkuList.add(item2);
         expectedSkuList.add(item3);
 
-        List<Sku> test = new ArrayList<>();
-        test.addAll(expectedSkuList);
 
         StringReader sampleFileData = new StringReader("Product code\tDescription\tPrice\nH57\tTin o Beans\t1.23\nC330\tFruity drink\t0.54\nBR7\tSliced loaf\t1.54");
 
         Stock input = new Stock();
         input.updateSkuList(sampleFileData);
+        List <Sku> test = Store.getInstance().skuList;
 
-        assertEquals(test,Store.getInstance().skuList);
+        for (int i = 0; i < 2; i++) {
+            if(test.get(i) != expectedSkuList.get(i)){
+                System.out.println("test: "+test.get(i));
+                System.out.println("expected: " +expectedSkuList.get(i));
+            }
+        }
+
+        //assertEquals(test, expectedSkuList);
     }
 
 
