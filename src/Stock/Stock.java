@@ -41,7 +41,7 @@ public class Stock {
         ArrayList<String> listOfSkusAsStings = new ArrayList<>();
 
         BufferedReader readSourceFile = new BufferedReader(sourceFile);
-        String thisLine = null;
+        String thisLine;
         while((thisLine = readSourceFile.readLine()) != null){
             listOfSkusAsStings.add(thisLine);
         }

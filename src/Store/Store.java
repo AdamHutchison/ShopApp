@@ -1,14 +1,13 @@
 package Store;
 import Sku.Sku;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Store {
 
     private static Store uniqueInstance;
-    public ArrayList<Sku> skuList = new ArrayList<>();
+    public List<Sku> skuList = new ArrayList<>();
 
     private Store(){}
 

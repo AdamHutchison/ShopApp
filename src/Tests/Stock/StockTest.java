@@ -1,14 +1,16 @@
 package Tests.Stock;
 
-import Stock.Stock;
 import Sku.Sku;
-import org.junit.Test;
+import Stock.Stock;
 import Store.Store;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class StockTest {
 
@@ -38,7 +40,7 @@ public class StockTest {
         List input = stockTestInstance.getSkusFromSourceFileAsString(sampleFileData);
         List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add("H57\tTin o Beans\t1.23");
-        assertEquals(expectedOutput, input);
+        assertEquals(expectedOutput,input);
     }
 
     @Test
@@ -48,25 +50,26 @@ public class StockTest {
         Sku skuItem2 = new Sku();
         Sku skuItem3 = new Sku();
 
-        //create 3 new Sku onjects from strings using createNewSku method
+        //create 3 new Sku objects from strings using createNewSku method
         Sku item1 = skuItem1.createNewSku("H57\tTin o Beans\t1.23");
         Sku item2 = skuItem2.createNewSku("C330\tFruity drink\t0.54");
         Sku item3 = skuItem3.createNewSku("BR7\tSliced loaf\t1.54");
 
 
-        ArrayList<Sku> expectedSkuList = new ArrayList<>();
+        List<Sku> expectedSkuList = new ArrayList<>();
         expectedSkuList.add(item1);
         expectedSkuList.add(item2);
         expectedSkuList.add(item3);
+
+        List<Sku> test = new ArrayList<>();
+        test.addAll(expectedSkuList);
 
         StringReader sampleFileData = new StringReader("Product code\tDescription\tPrice\nH57\tTin o Beans\t1.23\nC330\tFruity drink\t0.54\nBR7\tSliced loaf\t1.54");
 
         Stock input = new Stock();
         input.updateSkuList(sampleFileData);
 
-        assertEquals(expectedSkuList,Store.getInstance().skuList);
-        //act
-        //assert
+        assertEquals(test,Store.getInstance().skuList);
     }
 
 

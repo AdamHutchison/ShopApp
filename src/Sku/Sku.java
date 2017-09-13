@@ -46,7 +46,8 @@ public class Sku implements java.io.Serializable{
 
     @Override
     public String toString(){
-    return "toString has been overridden!";
+      String skuInfo = "Product Code:"+this.getProductCode()+" Description:"+this.getDescription()+" Price:"+this.getPrice();
+       return skuInfo;
     }
 
     public Sku createNewSku(String productInfo){
